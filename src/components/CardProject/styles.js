@@ -1,11 +1,10 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  flex: 1;
-`;
+export const Container = styled.View``;
 
 export const Card = styled.TouchableOpacity`
   flex-direction: column;
+  justify-content: space-between;
   width: 135px;
   height: 175px;
   margin: 30px 0;
@@ -26,9 +25,11 @@ export const IconTask = styled.View`
   margin-bottom: 15px;
 `;
 
+export const Body = styled.View``;
+
 export const Title = styled.Text`
   color: #fff;
-  margin: 5px 0;
+  margin-bottom: 5px;
 `;
 
 export const Subtitle = styled.Text`
@@ -39,7 +40,6 @@ export const Subtitle = styled.Text`
 
 export const CardBottom = styled.View`
   justify-content: flex-end;
-  margin-top: 25px;
 `;
 
 export const Circle = styled.View`

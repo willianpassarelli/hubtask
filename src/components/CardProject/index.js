@@ -5,6 +5,7 @@ import {
   Container,
   IconTask,
   Card,
+  Body,
   Title,
   Subtitle,
   CardBottom,
@@ -12,7 +13,7 @@ import {
   Symbol,
 } from './styles';
 
-export default function CardProject({ data }) {
+export default function CardProject({ data, onPress }) {
   const nameSymbol = useMemo(() => {
     const str = data.user.username;
     return str.substring(0, 1).toUpperCase();
@@ -20,13 +21,14 @@ export default function CardProject({ data }) {
 
   return (
     <Container>
-      <Card>
+      <Card onPress={onPress}>
         <IconTask>
           <Icon name="tasks" size={28} color="#FFF" />
         </IconTask>
-
-        <Title>#{data.__meta__.tasks_count} Tarefas</Title>
-        <Subtitle>{data.title}</Subtitle>
+        <Body>
+          <Title>{data.__meta__.tasks_count} Tarefas</Title>
+          <Subtitle>{data.title}</Subtitle>
+        </Body>
         <CardBottom>
           <Circle>
             <Symbol>{nameSymbol}</Symbol>

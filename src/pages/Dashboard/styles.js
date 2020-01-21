@@ -55,5 +55,23 @@ export const MenuDate = styled.View`
 export const MenuItem = styled.Text`
   font-size: 22px;
   font-weight: bold;
+  margin-bottom: 10px;
   margin-right: 50px;
+  color: ${props => (props.color ? '#ddd' : '#000')};
+`;
+
+export const MenuBorder = styled.View`
+  width: 30px;
+  border-radius: 5px;
+  border-bottom-color: #35b49f;
+  border-bottom-width: 4px;
+  margin-bottom: 10px;
+`;
+
+export const MenuSelected = styled.TouchableOpacity``;
+
+export const TaskList = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false,
+})`
+  flex: 1;
 `;
