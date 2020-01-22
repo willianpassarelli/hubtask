@@ -1,10 +1,15 @@
+import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
+
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
 import Dashboard from './pages/Dashboard';
+import Search from './pages/Search';
 import Projects from './pages/Projects';
 import New from './pages/New';
 
@@ -18,7 +23,25 @@ export default (isSigned = false) =>
         }),
         App: createBottomTabNavigator(
           {
-            Dashboard,
+            Dashboard: {
+              screen: createStackNavigator(
+                {
+                  Dashboard,
+                  Search,
+                },
+                {
+                  defaultNavigationOptions: {
+                    headerTitle: false,
+                    headerTransparent: true,
+                  },
+                }
+              ),
+              navigationOptions: {
+                tabBarIcon: ({ tintColor }) => (
+                  <Icon name="home" size={28} color={tintColor} />
+                ),
+              },
+            },
             New,
             Projects,
           },

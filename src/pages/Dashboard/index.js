@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
 import IconIo from 'react-native-vector-icons/Ionicons';
 
 import Background from '~/components/Background';
@@ -25,7 +24,7 @@ import {
   TaskList,
 } from './styles';
 
-export default function Dashboard() {
+export default function Dashboard({ navigation }) {
   const [list, setList] = useState([]);
   const [selected, setSelected] = useState({
     id: 1,
@@ -38,7 +37,7 @@ export default function Dashboard() {
     { id: 3, label: 'Mês', value: 'month' },
   ]);
   const [project, setProject] = useState(0);
-  const [tasklist, setTaskList] = useState([]);
+  const [tasklist, setTasklist] = useState([]);
 
   useEffect(() => {
     async function loadProjects() {
@@ -57,14 +56,18 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function loadTasks() {
-      const response = await api.get(`/projects/${project}/tasks`);
+      const response = await api.get(`/projects/${project}/tasks`, {
+        params: {
+          date: selected.value,
+        },
+      });
 
       if (response.data.length !== 0) {
-        setTaskList(response.data);
+        setTasklist(response.data);
       }
     }
     loadTasks();
-  }, [project]);
+  }, [project, selected]);
 
   function handleMenuSelected(item) {
     setSelected(item);
@@ -81,7 +84,7 @@ export default function Dashboard() {
           <Name>Olá willianpassarelli</Name>
           <Subtitle>Sua lista de tarefas de hoje</Subtitle>
         </Header>
-        <SearchBar>
+        <SearchBar onPress={() => navigation.navigate('Search')}>
           <IconIo name="ios-search" size={24} color="#444" />
           <SearchInput>Procure por uma tarefa</SearchInput>
         </SearchBar>
@@ -123,9 +126,3 @@ export default function Dashboard() {
     </Background>
   );
 }
-
-Dashboard.navigationOptions = {
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="home" size={28} color={tintColor} />
-  ),
-};
