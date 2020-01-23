@@ -1,19 +1,24 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  margin-bottom: 10px;
+  flex: 1;
 `;
 
 export const Card = styled.TouchableOpacity`
-  height: 75px;
+  margin-bottom: 10px;
+  height: 100px;
   background: #fff;
   padding: 15px;
   flex-direction: row;
+  align-items: center;
   border-radius: 10px;
+  border-left-color: ${props => (props.color ? props.color : '#FFF')};
+  border-left-width: 2px;
 `;
 
 export const Infos = styled.View`
-  margin: 0 15px;
+  flex: 1;
+  margin-left: 15px;
 `;
 
 export const Title = styled.Text`
@@ -25,4 +30,10 @@ export const Status = styled.Text`
   font-size: 14px;
   color: #ccc;
   margin-top: 5px;
+`;
+
+export const ProjectTitle = styled.Text`
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
 `;
