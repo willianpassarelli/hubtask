@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Background from '~/components/Background';
-import CardTask from '~/components/CardTask';
+import SearchCard from '~/components/SearchCard';
 
 import api from '~/services/api';
 
@@ -61,7 +61,7 @@ export default function Search() {
         <TaskList
           data={tasklist}
           keyExtractor={item => String(item.id)}
-          renderItem={({ item }) => <CardTask data={item} />}
+          renderItem={({ item }) => <SearchCard data={item} />}
         />
       </Container>
     </Background>

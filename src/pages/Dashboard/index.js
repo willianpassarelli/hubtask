@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
+import { useSelector } from 'react-redux';
 import IconIo from 'react-native-vector-icons/Ionicons';
 
 import Background from '~/components/Background';
@@ -11,6 +12,8 @@ import api from '~/services/api';
 import {
   Container,
   Header,
+  Circle,
+  Avatar,
   Name,
   Subtitle,
   Title,
@@ -22,20 +25,19 @@ import {
   MenuItem,
   MenuBorder,
   TaskList,
+  Left,
 } from './styles';
 
 export default function Dashboard({ navigation }) {
-  const [list, setList] = useState([]);
-  const [selected, setSelected] = useState({
-    id: 1,
-    label: 'Hoje',
-    value: 'today',
-  });
+  const [profile] = useSelector(state => state.user.profile);
+
   const [date] = useState([
     { id: 1, label: 'Hoje', value: 'today' },
     { id: 2, label: 'Semana', value: 'week' },
     { id: 3, label: 'Mês', value: 'month' },
   ]);
+  const [selected, setSelected] = useState(date[0]);
+  const [list, setList] = useState([]);
   const [project, setProject] = useState(0);
   const [tasklist, setTasklist] = useState([]);
 
@@ -62,9 +64,7 @@ export default function Dashboard({ navigation }) {
         },
       });
 
-      if (response.data.length !== 0) {
-        setTasklist(response.data);
-      }
+      setTasklist(response.data);
     }
     loadTasks();
   }, [project, selected]);
@@ -81,8 +81,19 @@ export default function Dashboard({ navigation }) {
     <Background>
       <Container>
         <Header>
-          <Name>Olá willianpassarelli</Name>
-          <Subtitle>Sua lista de tarefas de hoje</Subtitle>
+          <Left>
+            <Name>Olá {profile.username},</Name>
+            <Subtitle>Sua lista de tarefas de hoje</Subtitle>
+          </Left>
+          <Circle>
+            <Avatar
+              source={{
+                uri: profile.file
+                  ? profile.file.url
+                  : 'https://api.adorable.io/avatars/120/abott@adorable.png',
+              }}
+            />
+          </Circle>
         </Header>
         <SearchBar onPress={() => navigation.navigate('Search')}>
           <IconIo name="ios-search" size={24} color="#444" />

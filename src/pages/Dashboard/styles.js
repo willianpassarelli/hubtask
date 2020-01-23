@@ -6,8 +6,24 @@ export const Container = styled.View`
 `;
 
 export const Header = styled.View`
-  padding: 50px 0;
-  justify-content: center;
+  padding: 30px 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Left = styled.View``;
+
+export const Circle = styled.TouchableOpacity`
+  border-width: 2px;
+  border-color: #ddd;
+  border-radius: 100px;
+`;
+
+export const Avatar = styled.Image`
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
 `;
 
 export const Name = styled.Text`

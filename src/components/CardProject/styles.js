@@ -12,7 +12,7 @@ export const Card = styled.TouchableOpacity`
   background: #35b49f;
   padding: 10px;
   margin-right: 10px;
-  box-shadow: 0px 10px 5px #ddd;
+  box-shadow: 0px 10px 5px rgba(53, 180, 159, 0.4);
   elevation: 1;
 `;
 

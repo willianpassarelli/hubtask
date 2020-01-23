@@ -1,12 +1,17 @@
 import React from 'react';
-import { View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-// import { Container } from './styles';
+import Background from '~/components/Background';
+
+import { Container } from './styles';
 
 export default function New() {
-  return <View />;
+  return (
+    <Background>
+      <Container />
+    </Background>
+  );
 }
 
 New.navigationOptions = {
