@@ -31,7 +31,7 @@ export default (isSigned = false) =>
                 },
                 {
                   defaultNavigationOptions: {
-                    headerTitle: false,
+                    headerTitle: '',
                     headerTransparent: true,
                   },
                 }

@@ -8,13 +8,13 @@ export const Container = styled.View`
 export const Header = styled.View`
   padding: 30px 0;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Left = styled.View``;
 
-export const Circle = styled.TouchableOpacity`
+export const Circle = styled.View`
   border-width: 2px;
   border-color: #ddd;
   border-radius: 100px;
