@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import { useSelector } from 'react-redux';
-import IconIo from 'react-native-vector-icons/Ionicons';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import Background from '~/components/Background';
 import CardProject from '~/components/CardProject';
@@ -96,7 +97,7 @@ export default function Dashboard({ navigation }) {
           </Circle>
         </Header>
         <SearchBar onPress={() => navigation.navigate('Search')}>
-          <IconIo name="ios-search" size={24} color="#444" />
+          <Icon name="ios-search" size={24} color="#444" />
           <SearchInput>Procure por uma tarefa</SearchInput>
         </SearchBar>
         <Title>Projetos</Title>
