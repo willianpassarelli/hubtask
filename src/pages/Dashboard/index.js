@@ -86,7 +86,7 @@ export default function Dashboard({ navigation }) {
             <Name>Olá {profile.username},</Name>
             <Subtitle>Sua lista de tarefas de hoje</Subtitle>
           </Left>
-          <Circle>
+          <Circle onPress={() => navigation.navigate('Profile')}>
             <Avatar
               source={{
                 uri: profile.file

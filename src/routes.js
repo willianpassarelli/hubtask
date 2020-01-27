@@ -9,6 +9,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 import Search from './pages/Search';
 import Projects from './pages/Projects';
 import New from './pages/New';
@@ -28,6 +29,7 @@ export default (isSigned = false) =>
                 {
                   Dashboard,
                   Search,
+                  Profile,
                 },
                 {
                   defaultNavigationOptions: {
