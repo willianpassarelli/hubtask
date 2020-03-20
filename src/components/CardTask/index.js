@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Animated } from 'react-native';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import { Container, Card, Infos, Title, Status } from './styles';

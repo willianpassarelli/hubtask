@@ -71,6 +71,7 @@ export default function Search() {
 Search.navigationOptions = ({ navigation }) => ({
   headerLeft: () => (
     <TouchableOpacity
+      style={{ marginLeft: 5 }}
       onPress={() => {
         navigation.goBack();
       }}

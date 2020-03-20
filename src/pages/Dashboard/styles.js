@@ -14,7 +14,7 @@ export const Header = styled.View`
 
 export const Left = styled.View``;
 
-export const Circle = styled.View`
+export const Circle = styled.TouchableOpacity`
   border-width: 2px;
   border-color: #ddd;
   border-radius: 100px;

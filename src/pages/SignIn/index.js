@@ -9,6 +9,7 @@ import { signInRequest } from '~/store/modules/auth/actions';
 import logo from '~/assets/logo.png';
 
 import {
+  Background,
   Container,
   Top,
   Form,
@@ -34,37 +35,39 @@ export default function SignIn({ navigation }) {
   }
 
   return (
-    <Container>
-      <Top>
-        <Image source={logo} resizeMode="cover" />
-      </Top>
-      <Form>
-        <FormInput
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCorrect={false}
-          autoCapitalize="none"
-          placeholder="Email"
-          returnKeyType="next"
-          onSubmitEditing={() => passwordRef.current.focus()}
-        />
-        <FormInput
-          ref={passwordRef}
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-          placeholder="Senha"
-          returnKeyType="send"
-          onSubmitEditing={handleSubmit}
-        />
+    <Background>
+      <Container>
+        <Top>
+          <Image source={logo} resizeMode="cover" />
+        </Top>
+        <Form>
+          <FormInput
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder="Email"
+            returnKeyType="next"
+            onSubmitEditing={() => passwordRef.current.focus()}
+          />
+          <FormInput
+            ref={passwordRef}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+            placeholder="Senha"
+            returnKeyType="send"
+            onSubmitEditing={handleSubmit}
+          />
 
-        <ContainerButton>
-          <TextButton>Entrar</TextButton>
-          <CircleButton onPress={handleSubmit}>
-            <Icon name="ios-arrow-round-forward" size={44} color="#FFF" />
-          </CircleButton>
-        </ContainerButton>
+          <ContainerButton>
+            <TextButton>Entrar</TextButton>
+            <CircleButton onPress={handleSubmit}>
+              <Icon name="ios-arrow-round-forward" size={44} color="#FFF" />
+            </CircleButton>
+          </ContainerButton>
+        </Form>
         <BottomItems>
           <BottomButton>
             <BottomText onPress={() => navigation.navigate('SignUp')}>
@@ -75,7 +78,7 @@ export default function SignIn({ navigation }) {
             <BottomText>Esqueci minha senha</BottomText>
           </BottomButton>
         </BottomItems>
-      </Form>
-    </Container>
+      </Container>
+    </Background>
   );
 }

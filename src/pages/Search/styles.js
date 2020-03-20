@@ -1,12 +1,11 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
-  padding: 20px;
 `;
 
 export const Header = styled.View`
-  padding: 30px 0;
+  padding: 8px 20px;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
@@ -35,6 +34,7 @@ export const SearchBar = styled.View`
   flex-direction: row;
   align-items: center;
   height: 43px;
+  margin: 0 20px;
   padding: 10px 20px;
   background: #eee;
   border-radius: 10px;
@@ -50,4 +50,5 @@ export const TaskList = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
 })`
   flex: 1;
+  margin: 0 20px;
 `;

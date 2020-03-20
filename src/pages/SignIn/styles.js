@@ -1,26 +1,34 @@
 import styled from 'styled-components/native';
 import { Platform } from 'react-native';
 
+import bg from '~/assets/bg.png';
+
+export const Background = styled.ImageBackground.attrs({
+  source: bg,
+})`
+  flex: 1;
+  width: 100%;
+  height: 100%;
+`;
+
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
   behavior: 'padding',
 })`
   flex: 1;
   justify-content: center;
-  background: #35b49f;
-  align-items: center;
 `;
 
 export const Top = styled.View`
-  margin: 80px 0;
+  margin-top: 20px;
+  align-items: center;
 `;
 
 export const Form = styled.View`
-  flex: 1;
   align-self: stretch;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  background: #fff;
+  margin: 20px 0;
   padding: 30px;
 `;
 
@@ -57,16 +65,13 @@ export const CircleButton = styled.TouchableOpacity`
 `;
 
 export const BottomItems = styled.View`
-  flex: 2;
-  align-items: flex-end;
   flex-direction: row;
   justify-content: space-between;
+  padding: 30px;
 `;
+
+export const BottomButton = styled.TouchableOpacity``;
 
 export const BottomText = styled.Text`
   font-size: 16px;
-`;
-
-export const BottomButton = styled.TouchableOpacity`
-  padding: 20px 0;
 `;
