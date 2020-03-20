@@ -29,6 +29,20 @@ export const Avatar = styled.Image`
   border-radius: 100px;
 `;
 
+export const Edit = styled.TouchableOpacity`
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-width: 1px;
+  border-radius: 100px;
+  border-color: #ddd;
+  position: absolute;
+  bottom: 25px;
+  left: 50px;
+`;
+
 export const Username = styled.Text`
   font-weight: bold;
   margin-bottom: 5px;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import NavigationService from './services/navigation';
 
 import createRouter from './routes';
 
@@ -8,5 +9,9 @@ export default function App() {
 
   const Routes = createRouter(signed);
 
-  return <Routes />;
+  return (
+    <Routes
+      ref={navigatorRef => NavigationService.setNavigator(navigatorRef)}
+    />
+  );
 }
