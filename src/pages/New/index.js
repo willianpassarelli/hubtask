@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { ActivityIndicator } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Background from '~/components/Background';
+import Modal from '~/components/Modal';
 
 import { createRequest } from '~/store/modules/project/actions';
 
@@ -20,6 +22,8 @@ import {
 
 export default function New() {
   const descriptionRef = useRef();
+
+  const loading = useSelector(state => state.project.loading);
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -56,9 +60,14 @@ export default function New() {
           onChangeText={setDescription}
         />
         <SubmitButton onPress={handleSubmit}>
-          <TextButton>CRIAR PROJETO</TextButton>
+          {loading ? (
+            <ActivityIndicator color="#fff" size="small" />
+          ) : (
+            <TextButton>CRIAR PROJETO</TextButton>
+          )}
         </SubmitButton>
       </Container>
+      <Modal isVisible title="modal" description="texto" textButton="OK" />
     </Background>
   );
 }
