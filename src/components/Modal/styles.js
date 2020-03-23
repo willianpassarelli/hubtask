@@ -27,7 +27,7 @@ export const HeaderModal = styled.View`
 
 export const TitleModal = styled.Text`
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 export const BodyModal = styled.View`

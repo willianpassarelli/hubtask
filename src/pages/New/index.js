@@ -8,6 +8,7 @@ import Background from '~/components/Background';
 import Modal from '~/components/Modal';
 
 import { createRequest } from '~/store/modules/project/actions';
+import { actionModal } from '~/store/modules/modal/actions';
 
 import {
   Container,
@@ -23,7 +24,9 @@ import {
 export default function New() {
   const descriptionRef = useRef();
 
-  const loading = useSelector(state => state.project.loading);
+  const { loading, error, titleModal, descriptionModal } = useSelector(
+    state => state.project
+  );
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -32,6 +35,10 @@ export default function New() {
 
   function handleSubmit() {
     dispatch(createRequest(title, description));
+  }
+
+  function handleModal() {
+    dispatch(actionModal());
   }
 
   return (
@@ -67,7 +74,13 @@ export default function New() {
           )}
         </SubmitButton>
       </Container>
-      <Modal isVisible title="modal" description="texto" textButton="OK" />
+      <Modal
+        isVisible={error}
+        title={titleModal}
+        description={descriptionModal}
+        textButton="OK"
+        onPressButton={handleModal}
+      />
     </Background>
   );
 }
