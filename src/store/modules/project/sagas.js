@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { takeLatest, call, put, all, delay } from 'redux-saga/effects';
 
 import { createSuccess, createFailure } from './actions';
 
@@ -12,6 +12,7 @@ export function* createProject({ payload }) {
 
     yield put(createSuccess());
   } catch (err) {
+    yield delay(3000);
     yield put(
       createFailure(
         'Falha ao cadastrar projeto',

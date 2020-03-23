@@ -27,19 +27,3 @@ export const Description = styled.Text`
   font-size: 16px;
   margin: 10px 0;
 `;
-
-export const SubmitButton = styled.TouchableOpacity`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
-  padding: 15px 10px;
-  background: #35b49f;
-  border-radius: 50px;
-`;
-
-export const TextButton = styled.Text`
-  font-size: 16px;
-  font-weight: 500;
-  color: #fff;
-`;

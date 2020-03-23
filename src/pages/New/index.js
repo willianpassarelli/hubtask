@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Background from '~/components/Background';
+import Button from '~/components/Button';
 import Modal from '~/components/Modal';
 
 import { createRequest } from '~/store/modules/project/actions';
@@ -17,8 +17,6 @@ import {
   Title,
   FormInput,
   Description,
-  SubmitButton,
-  TextButton,
 } from './styles';
 
 export default function New() {
@@ -66,13 +64,9 @@ export default function New() {
           value={description}
           onChangeText={setDescription}
         />
-        <SubmitButton onPress={handleSubmit}>
-          {loading ? (
-            <ActivityIndicator color="#fff" size="small" />
-          ) : (
-            <TextButton>CRIAR PROJETO</TextButton>
-          )}
-        </SubmitButton>
+        <Button onPress={handleSubmit} loading={loading}>
+          CRIAR PROJETO
+        </Button>
       </Container>
       <Modal
         isVisible={error}
