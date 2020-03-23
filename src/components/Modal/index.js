@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Animated } from 'react-native';
-
 import PropTypes from 'prop-types';
-
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import { useDispatch } from 'react-redux';
+
+import { actionModal } from '~/store/modules/modal/actions';
 
 import {
   Container,
@@ -26,30 +28,43 @@ export default function Modal({
   description,
   title,
 }) {
-  const [visible, setVisible] = useState(isVisible);
-  const [offset] = useState(new Animated.ValueXY({ x: 0, y: 100 }));
-  const [opacity] = useState(new Animated.Value(0));
+  const dispatch = useDispatch();
+
+  const [offset, setOffSet] = useState(new Animated.ValueXY({ x: 0, y: 100 }));
+  const [opacity, setOpacity] = useState(new Animated.Value(0));
 
   useEffect(() => {
-    Animated.parallel([
-      Animated.spring(offset.y, {
-        toValue: 0,
-        speed: 5,
-      }),
-      Animated.timing(opacity, {
-        toValue: 1,
-        duration: 1000,
-      }),
-    ]).start();
-  }, [offset.y, opacity]);
+    if (isVisible) {
+      Animated.parallel([
+        Animated.spring(offset.y, {
+          toValue: 0,
+          speed: 5,
+        }),
+        Animated.timing(opacity, {
+          toValue: 1,
+          duration: 1000,
+        }),
+      ]).start();
+    }
+  }, [isVisible, offset.y, opacity]);
+
+  useEffect(() => {
+    function resetState() {
+      if (!isVisible) {
+        setOffSet(new Animated.ValueXY({ x: 0, y: 100 }));
+        setOpacity(new Animated.Value(0));
+      }
+    }
+    resetState();
+  }, [isVisible]);
 
   function backdrop() {
-    setVisible(!visible);
+    dispatch(actionModal());
   }
 
   return (
     <>
-      {visible && (
+      {isVisible && (
         <Container>
           <Box
             style={[

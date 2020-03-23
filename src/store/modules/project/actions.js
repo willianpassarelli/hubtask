@@ -11,8 +11,9 @@ export function createSuccess() {
   };
 }
 
-export function createFailure() {
+export function createFailure(title, description) {
   return {
     type: '@project/PROJECT_FAILURE',
+    payload: { title, description },
   };
 }
